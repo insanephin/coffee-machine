@@ -1,0 +1,17 @@
+{
+  "name": "coffee-machine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node build.mjs --watch",
+    "build": "node build.mjs",
+    "typecheck": "tsc",
+    "zip": "npm run typecheck && npm run build && cd dist && zip -r ../coffee-machine.zip . -x '*.DS_Store'"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.7",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}
