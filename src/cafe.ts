@@ -290,10 +290,16 @@ function fitModalToArticle(): void {
 function leaveFrameOnNavigate(): void {
   const path = location.pathname;
   const check = () => {
-    if (location.pathname !== path) window.top!.location.href = location.href;
+    if (location.pathname !== path) window.top!.location.href = fullPageUrl();
   };
   new MutationObserver(check).observe(document, { childList: true, subtree: true });
   addEventListener("popstate", check);
+}
+
+function fullPageUrl(): string {
+  const url = new URL(location.href);
+  url.pathname = url.pathname.replace(/^\/ca-fe\/cafes\//, "/f-e/cafes/");
+  return url.href;
 }
 
 function closeModal(): void {
